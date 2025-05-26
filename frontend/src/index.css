@@ -1,0 +1,14 @@
+.error{
+  color: red;
+  background-color: aliceblue;
+  font-size: 16px;
+  border-style: dashed;
+}
+
+.notification{
+  color: darkgreen;
+  background-color: aliceblue;
+  font-size: 16px;
+  border-style: dashed;
+}
+

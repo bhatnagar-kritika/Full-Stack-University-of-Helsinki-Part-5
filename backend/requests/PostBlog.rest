@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imtpbmc0NCIsImlkIjoiNjgwYTM3ODZkY2M2YTIzN2FhMDc2NjA2IiwiaWF0IjoxNzQ1ODY2NTAzfQ.4rf4Zgo1thHkpIa9Y0j0sOasiaJaIyKPxm0XPMBBQWw
+
+{
+  "title": "Harry Potter trivia",
+  "author" : "J k rowling",
+  "url": "Harry101.com",
+  "likes": "77"
+}
