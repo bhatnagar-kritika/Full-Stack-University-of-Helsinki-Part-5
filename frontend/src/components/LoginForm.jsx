@@ -1,25 +1,25 @@
-const LoginForm = ({username, password, handleUsernameChange, handlePasswordChange, handleLogin}) => {
+const LoginForm = ({ username, password, handleUsernameChange, handlePasswordChange, handleLogin }) => {
 
-    return(
+  return(
+    <div>
+      <h2> Log in to the application </h2>
+
+      <form onSubmit={handleLogin} autoComplete="off">
         <div>
-            <h2> Log in to the application </h2>
-
-            <form onSubmit={handleLogin}>
-                <div>
                     Username <input value={username} onChange={handleUsernameChange} />
-                </div>
-
-                <div>
-                    Password <input type="password" value={password} onChange={handlePasswordChange} />
-                </div>
-
-                <div>
-                    <button type="submit">Login</button>
-                </div>
-
-            </form>
         </div>
-    )
+
+        <div>
+                    Password <input type="password" value={password} name="Password" autoComplete="off" onChange={handlePasswordChange} />
+        </div>
+
+        <div>
+          <button type="submit">Login</button>
+        </div>
+
+      </form>
+    </div>
+  )
 
 
 }

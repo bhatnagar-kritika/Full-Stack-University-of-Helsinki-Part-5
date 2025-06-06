@@ -26,7 +26,7 @@ loginRouter.post('/', async(request, response) => {
 
   response
     .status(200)
-    .send({ token, username: user.username, name: user.name })
+    .send({ token, username: user.username, name: user.name, id:user._id.toString() }) //remember to send id or current id will be undefined in frontend Blog.jsx
 })
 
 

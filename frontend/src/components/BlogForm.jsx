@@ -1,38 +1,42 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-const BlogForm = ({createBlog}) => {
+const BlogForm = ({ createBlog }) => {
 
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
-    const [url, setURL] =useState('')
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [url, setURL] =useState('')
 
-     const newBlog = (event) => {
-        event.preventDefault()
-        createBlog({title, author, url})
-     }
+  const newBlog = (event) => {
+    event.preventDefault()
+    createBlog({ title, author, url })
+  }
 
-    return(
+  return(
 
-        <div>
-            <h2>Add a new blog:</h2>
-            <form onSubmit={newBlog}>
-                <p>Title <input type="text" value={title} onChange={({target}) => setTitle(target.value)}/>
-                </p>
-                
-                <p>
-                    Author <input type="text" value={author} onChange={({target}) => setAuthor(target.value)}/>
-                </p>
+    <div>
+      <h2>Add a new blog:</h2>
+      <form onSubmit={newBlog}>
 
-                <p>
-                    url <input type="url" value={url} onChange={({target}) => setURL(target.value)} />
-                </p>
+        <p><label htmlFor="blog-title">Title </label>
+          <input type="text" value={title} onChange={({ target }) => setTitle(target.value)} id='blog-title'/>
+        </p>
 
-                <button type="Submit">Create</button>
+        <p>
+          <label htmlFor='blog-author'>Author</label>
+          <input type="text" value={author} onChange={({ target }) => setAuthor(target.value)} id='blog-author'/>
+        </p>
 
-            </form>
-        </div>
+        <p>
+          <label  htmlFor='blog-url'>url</label>
+          <input type="url" value={url} onChange={({ target }) => setURL(target.value)} id='blog-url'/>
+        </p>
 
-    )
+        <button type="Submit">Create</button>
+
+      </form>
+    </div>
+
+  )
 }
 
 export default BlogForm
