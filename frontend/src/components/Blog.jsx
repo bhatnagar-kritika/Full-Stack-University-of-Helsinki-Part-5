@@ -26,13 +26,15 @@ const Blog = ({ blog, updateLike, deleteBlog, currentUserID }) => {
   }
 
   // console.log('inside Blog.jsx, blog.user.id is:', blog.user.id)
-  // console.log('blog.user:', blog.user)
+  console.log('blog.user:', blog.user)
   console.log('currentUserID', currentUserID)
+
+
   return(
 
     <div style={blogStyle} className='blog'>
       <div style={topRowStyle} className='blogBasic'>
-        <span>
+        <span className='blog-title-author'>
           {blog.title} by {blog.author}
         </span>
         <button onClick={toggleVisibility}>
@@ -43,11 +45,25 @@ const Blog = ({ blog, updateLike, deleteBlog, currentUserID }) => {
       {visible && (
         <div style={{ marginTop:10 }} className='blog-details'>
           <p>Url: {blog.url}</p>
-          <p> Likes:{blog.likes}<button onClick={() => updateLike(blog)}>Like</button></p>
-          <p>Created by user: {blog.user.name}</p>
-          <p>{blog.user && currentUserID === blog.user.id && (
-            <button onClick={handleDelete}>Delete</button>
-          )}</p>
+
+          <div style={{ display:'flex', alignItems:'center', gap:'10px' }}>
+            <span data-testid='like-count'>Likes:{blog.likes}</span>
+            <button onClick={() => updateLike(blog)}>Like</button>
+          </div>
+          <p data-testid='blog-author'>Created by user: {blog.user.name}</p>
+
+          <div style={{ display:'flex', alignItems:'center', gap:'10px' }}>
+            <span>
+              {/* {blog.user && currentUserID === blog.user.id && ( */}
+              {blog.user?.id === currentUserID && (
+                <>
+                  {console.log('rendering delete button inside jsx')}
+                  <button onClick={handleDelete} data-testid="delete-button">Delete</button>
+                </>
+
+              )}
+            </span>
+          </div>
         </div>
       )}
     </div>

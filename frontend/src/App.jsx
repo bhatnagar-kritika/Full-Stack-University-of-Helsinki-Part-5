@@ -104,7 +104,7 @@ const App = () => {
 
     try{
       const response = await blogService.update(updatedBlog,blogToUpdate.id)
-      //console.log('response received in updateLike is', response)
+      console.log('response received in updateLike is', response)
 
       setBlogs(blogs.map(
         (b => b.id!==blogToUpdate.id

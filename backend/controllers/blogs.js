@@ -23,7 +23,7 @@ blogRouter.get('/:id', async (request, response) => {
 blogRouter.post('/', middleware.userExtractor,  async (request, response) => {
   const body = request.body
   const user = request.user
-  console.log('the received blog is:',request.body)
+  //console.log('the received blog is:',request.body)
 
   const newBlog= new Blog({
     title: body.title,
@@ -37,7 +37,11 @@ blogRouter.post('/', middleware.userExtractor,  async (request, response) => {
   user.blogs= user.blogs.concat(savedBlog._id)
   await user.save()
 
-  response.status(201).json(savedBlog)
+  //response.status(201).json(savedBlog)
+
+  const populatedBlog = await savedBlog.populate('user', { username:1, name:1, id:1 }) //is it best practice to use populate in post
+
+  response.status(201).json(populatedBlog)
 
 })
 
@@ -76,6 +80,7 @@ blogRouter.delete('/:id',middleware.userExtractor, async (request, response) => 
 })
 
 blogRouter.put('/:id', async (request, response) => {
+  //console.log('recieved update in put router:', request.body)
   const body = request.body
 
   const updatedBlog = {
